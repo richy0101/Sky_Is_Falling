@@ -10,7 +10,7 @@
 > + ![alt text](http://www.econedlink.org/lessons/images_lessons/267_farmer1.jpg "Farmer")
 >    - The user controls the farmer by moving him left or right in order to dodge the falling animals. User controls the farmer with the keyboard. The farmer has 2 lives.
 > + **2.** `Turtle`
-> + ![alt text](http://aux.iconpedia.net/uploads/192463869.png "Turtle")
+> + ![alt text](http://www.designdownloader.com/item/pngs/Sea_Turtle_t005/Sea_Turtle_t005-20120619174148-00001.png "Turtle")
 >    - The turtle is the slowest falling animal and is worth 1 point if dodged. It has no special movements.
 > + **3.** `Donkey`
 > + ![alt text](http://icons.iconarchive.com/icons/turbomilk/animals/256/donkey-icon.png "Donkey")
@@ -32,26 +32,9 @@
 > + **1.** `Score` - The user will get points for dodging different types of animals. No points can ever be reducted from the player. The player gets 1 point for dodging turtles and donkeys, 2 points for foxes and gazelles, and 3 points for cheetahs. The points will be displayed in a separate window that will also display the user's name, number of lives, and start, pause, and quit buttons.
 > + **2.** `Lives` - The user gets two lives to spare if he gets hit by a falling animal. All types of animals that aren't dodged make the user lose 1 live. After both lives are lost, the game ends and the scoring gets stopped, where the user can choose to quit or restart the game.
 > 
-###MyList Class
-> **Purpose**: a *templated* dynamic array-based `class` that stores all `User` objects
-#####Member Data
-> + **1.** `capacity` - int of the capacity of the list
-> + **2.** `size` - the current size of the List
-> + **3.** `data` - a templated array of data that the list holds
->        
-#####Methods
-> + **1.** Constructor - sets the size of the list to 0
-> + **2.** `operator[](int index)` - overrides allowing users to use `[]` instead of `.at()`
-> + **3.** `push_back(T n)` - a void function that adds a variable to the back element of the list and increments size
-> + **4.** `size()` - returns the current integer size of the list
-> + **5.** `at(int loc)` - returns the element of the list that is passed as an integer parameter 
-> + **6.** `remove(T val)` - removes a specific value in the list that is passed as a parameter and decrements size by 1 and moves all elements forward to replace that removed element
-> 
-###GMLReader Class
-> **Purpose**: Parse the GML file and read in raw node/vertex and edge data
-#####Member Data
-> + **1.** None
->         
+
+## Game & User Interface
+> + ![alt text](https://github.com/usc-csci102-spring2013/game_rhphilli/blob/master/Images/photo.JPG "Hand Drawn Interface")
 #####Methods
 > + **1.** `static bool read(const char *fn, std::vector<std::string>& nodes, std::vector<std::string>& edges)` - reads in a file and stores the node/edge data in two separate `string vectors`
 > 
