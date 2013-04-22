@@ -6,7 +6,7 @@
 
 ## Objects
 > 
-> + **1.** ![alt text](http://us.123rf.com/400wm/400/400/chudtsankov/chudtsankov1106/chudtsankov110600074/9681562-lucky-farmer-man-carrying-a-rake.jpg "Farmer")
+> + **1.** ![alt text](http://www.econedlink.org/lessons/images_lessons/267_farmer1.jpg "Farmer")
 >    - The user controls the farmer by moving him left or right in order to dodge the falling animals. 
 > + **2.** Parse the `strings` containing node and edge data to create `User` objects and store them in `MyList`class.
 > + **3.** Use `GMLWriter` class to output `User` objects and their friend connections.
