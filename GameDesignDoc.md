@@ -2,37 +2,35 @@
 
 ## Overview
 > The "Sky Is Falling" will be a `qt` based game where the user controls a farmer and tries to dogde 5 different falling animals, which will all `move` differently.
-> The user accumulates a different amount of points for every animal dodged. The user has two lives, and the game will end after both lives are lost.
+> The user accumulates a different amount of points for every animal dodged. The user has two lives, and the game will end after both lives are lost. The game gets faster and faster as time goes on.
 
-## Objects
+## Moving Objects
 > 
-> + **1.** ![alt text](http://www.econedlink.org/lessons/images_lessons/267_farmer1.jpg "Farmer")
->    - The user controls the farmer by moving him left or right in order to dodge the falling animals. 
-> + **2.** Parse the `strings` containing node and edge data to create `User` objects and store them in `MyList`class.
-> + **3.** Use `GMLWriter` class to output `User` objects and their friend connections.
-> + **4.** Process a command file that specifies `Friend` additions and removals.
-> + **5.** Write the resulting social network to a new GML file.
-> + **6.** Software should handle any error's like incorrect file inputs, User inputs, or friend additions/removals.
+> + **1.** `Farmer`
+> + ![alt text](http://www.econedlink.org/lessons/images_lessons/267_farmer1.jpg "Farmer")
+>    - The user controls the farmer by moving him left or right in order to dodge the falling animals. User controls the farmer with the keyboard. The farmer has 2 lives.
+> + **2.** `Turtle`
+> + ![alt text](http://aux.iconpedia.net/uploads/192463869.png "Turtle")
+>    - The turtle is the slowest falling animal and is worth 1 point if dodged. It has no special movements.
+> + **3.** `Donkey`
+> + ![alt text](http://icons.iconarchive.com/icons/turbomilk/animals/256/donkey-icon.png "Donkey")
+>    - The donkey is the second slowest animal and is worth 1 point if dodged. It takes frequent breaks when it gets tired and stops momentarily.
+> + **4.** `Fox`
+> + ![alt text](http://osx.wdfiles.com/local--files/icon:cunning-fox/Cunning-Fox.png "Fox")
+>    - The fox runs at moderate speed and is worth 2 points. It's special function is the ability to move backwards for short intervals. 
+> + **5.** `Gazelle`
+> + ![alt text](http://www.iconshock.com/img_jpg/SUPERVISTA/animals/jpg/128/gazelle_icon.jpg "Gazelle")
+>    - The gazelle runs quickly and is worth 2 points. It's special function is the ability to left and right. 
+> + **6.** `Cheetah`
+> + ![alt text](http://www.iconshock.com/img_jpg/SUNNYDAY/animals/jpg/128/cheetah_icon.jpg "Cheetah")
+>    - The cheetah is the fastest animal and is worth 3 points. It's special function is to sprint for short intervals. 
 
+## User Gameplay
+> **Purpose**: The user will control the farmer with keyboard strokes and try to avoid the falling animals. The user can only move the farmer left and right. It is simple gameplay controls that will make the game simpler to play for the user. I eventually plan to add power ups to the game so there will be a keyboard stroke added to use the powerup.
 
-## Classes
-###User Class
-> **Purpose**: Stores all the personal information of the `User` as well as friend connections
-#####Member Data
-> + **1.** `name`- stores the name of User
-> + **2.** `age`- stores the age of User
-> + **3.** `zip`- stores zipcode of User
-> + **4.** `id`- stores the ID of User
-> + **5.** `IDfriends`- MyList of ids of friends
->        
-#####Methods
-> + **1.** `Constructor` - initializes `name`, `age`, `zip`, and `id` of the User by taking all of them as parameters. Also calls MyList constructor of the variable friendlist
-> + **2.** `getName()` - returns the string name of User
-> + **3.** `getAge()` - returns the integer age of User
-> + **4.** `getID()` - returns the integer ID of User
-> + **5.** `getZIP()` - returns the integer zip code of User
-> + **6.** `addFriends(int i)` - adds another User's id to the list IDfriends through a paramter
-> + **7.** `MyList<int>& friendsIDs()` - returns the whole list of IDfriends
+## Scoring & Lives
+> + **1.** `Score` - The user will get points for dodging different types of animals. No points can ever be reducted from the player. The player gets 1 point for dodging turtles and donkeys, 2 points for foxes and gazelles, and 3 points for cheetahs. The points will be displayed in a separate window that will also display the user's name, number of lives, and start, pause, and quit buttons.
+> + **2.** `Lives` - The user gets two lives to spare if he gets hit by a falling animal. All types of animals that aren't dodged make the user lose 1 live. After both lives are lost, the game ends and the scoring gets stopped, where the user can choose to quit or restart the game.
 > 
 ###MyList Class
 > **Purpose**: a *templated* dynamic array-based `class` that stores all `User` objects
