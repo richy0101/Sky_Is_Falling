@@ -35,39 +35,19 @@
 
 ## Game & User Interface
 > + ![alt text](http://i.imgur.com/KMttarR.jpg "Hand Drawn Interface")
-#####Methods
-> + **1.** `static bool read(const char *fn, std::vector<std::string>& nodes, std::vector<std::string>& edges)` - reads in a file and stores the node/edge data in two separate `string vectors`
+>  **Overview** There are two windows, one main window where the game is shown, and one menu window, where the widgets to control the game are located.
+> +  **1.** `Game Window`
+>     - As time progresses different animals will start to fall randomly at the top of the screen. It progresses from the slowest, the turtle, to the fastest, the cheetah. As time goes on all the animal's speed increase at a constant rate to make the game harder for the user.
+>     - User controls the farmer to dodge all the animals that are falling. One life of the two given will be taken away if the farmer touches a falling animal. The user accumulates a different amount of points per animal dodged.
+>     - Animal objects are created as the fall from the top of the screen and are deleted at the end of the window when they have completely fallen. There is no set number of animals that can be on the field but animals are created at random time intervals.
+> + **2.** `Menu Window`
+>     - Displays the user's entered `username`, the user's current `score`, and the user's current `lives` at the top of the window.
+>     - Displays four buttons: `start`,`pause`,`quit`, and `restart`
+>          * `start` button- when pressed the game starts, either at the beginning of the game when the game is preset to pause (timer is off) or when the game is paused.
+>          * `pause` button- when pressed the game pauses by pausing the timer.
+>          * `quit` button- when pressed the game force quits.
+>          * `restart` button- at the end of the game this button can be pressed to start a new game with `score` starting over at 0 and `lives` reset to 2.
+>     - Displays and retrieves the user input to move the farmer left or right. Input keyboard stroke to go left is `a` and to go right is `d`.
 > 
-###GMLWriter Class
-> **Purpose**: outputs `User` data (and their friendship connections) in node and edge formats.
-#####Member Data
-> + **1.** None
->          
-#####Methods
-> + **1.** `void write(char* f, MyList<User*> &list)` - writes data in node/edge format to a file by taking in a file and a list of users as parameters
-> 
-
-## Global Data/Functions
-> + **1.** I have a `const int DEFAULT_CAPACITY` in class `MyList` that is used in the constructor to always set the number of elements allowed in the list to whatever that variable is
-
-## High-level Architecture
-> The most interaction is between the `User` class and `MyList` class. MyList acts as a better form of a vector that can be used in other classes.
-> In User class there is a an instance of MyList to hold the friend IDs. MyList is especially useful because it is templated and can be used with many different
-> types of variables. I have created my own algorithms to parse the input gml and command files by using `stringstream` and `getline`. They are used to get attributes
-> of a user and add that user to the MyList of users. All the interactivity between adding and removing friends is done through the `MyList<int> friendsID` member variable of User class.
 
 
-## User Interface
-> I would like to add a GUI later on but currently I dont have one. The way users interact with the program is that they input three command line arguments: 
-> the input GML file that has the User data in node format and friend connections in edge format, a text file that will have commands to add or remove two Users,
->, and an output GML file they name that will output the Users and their attributes in node format as well as their newly made connections from my algorithm parsing the command
-> file (that will be in edge format).
-
-##Test Cases
-> + I plan to test all cases that could break my program. I have created error messages if the input GML file or command file isn't read, as well as if the names in the command file 
-> don't match User's names in the input GML file or if it doesnt start with an a or r(add or remove friends).
-> + I will test cases where the input GML file is not name correctly, when the command file is not named correctly, when the names in the command file are wrong, or when the lines in the command file don't start with an a or r.
-> + Some test cases that could break my program that haven't been tested for is if the name is more or less than two words (I.e. Richard Phillips). Also if the node/edge data is not formatted correctly I will not be able to parse it correctly.
-> Also, if there are extra random characters in either the GML input file or command file, my algorithm won't be able to parse it correctly.
-> + For functions like `read(const char *fn, std::vector<std::string>& nodes, std::vector<std::string>& edges)` I would pass in different filenames but the only one that would work is the filename that is in the folder of the run file.
-> Also for the function `write(char* f, MyList<User*> &list)` I'd have to pass the file that was named in `int main()` or else I couldn't output the gml file.
