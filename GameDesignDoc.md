@@ -34,7 +34,7 @@
 > 
 
 ## Game & User Interface
-> + ![alt text](https://github.com/usc-csci102-spring2013/game_rhphilli/blob/master/Images/photo.JPG "Hand Drawn Interface")
+> + ![alt text](http://i.imgur.com/KMttarR.jpg "Hand Drawn Interface")
 #####Methods
 > + **1.** `static bool read(const char *fn, std::vector<std::string>& nodes, std::vector<std::string>& edges)` - reads in a file and stores the node/edge data in two separate `string vectors`
 > 
