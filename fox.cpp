@@ -19,9 +19,19 @@ Fox::~Fox()
 
 void Fox::move()
 {
-   rect.moveTo(x,y+speed+4);
-   //std::cout << "y is " << y << std::endl;
-   y =y+speed+4;
+   randNum = std::rand()%5;
+  
+   if(randNum == 1)
+   {
+      rect.moveTo(x,y-10);
+      y -=10;
+   }
+   else
+   {
+   	rect.moveTo(x,y+speed+4);
+   	//std::cout << "y is " << y << std::endl;
+   	y =y+speed+4;
+   }
 }
 
 

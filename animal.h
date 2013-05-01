@@ -5,6 +5,7 @@
 #include <QRect>
 #include <QString>
 #include <iostream>
+#include <stdlib.h>
 
 class Animal
 {
@@ -20,7 +21,7 @@ class Animal
     void randAnimal();
     int x;
     int y;
-    int random;
+    int randNum;
     int speed;
     QString id;
     

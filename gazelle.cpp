@@ -19,9 +19,25 @@ Gazelle::~Gazelle()
 
 void Gazelle::move()
 {
-   rect.moveTo(x,y+(2*speed-4));
-   //std::cout << "y is " << y << std::endl;
-   y = y + 2*speed-4;
+   randNum = std::rand()%5;
+  
+   if(randNum == 1)
+   {
+      rect.moveTo(x+10,y);
+      x += 10;
+   }
+   else if(randNum == 2)
+   {
+      rect.moveTo(x-10,y);
+      x -=10;
+   }
+   
+   else
+   {
+   	rect.moveTo(x,y+(2*speed-4));
+   	//std::cout << "y is " << y << std::endl;
+   	y = y + 2*speed-4;
+   }
 }
 
 

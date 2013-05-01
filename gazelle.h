@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <stdlib.h>
 #include "animal.h"
 
 class Gazelle : public Animal

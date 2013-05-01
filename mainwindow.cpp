@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
   rand = 0;
-  velocity = 10;
+  velocity = 1;
   timerCount = 0;
   lives = 3;
   score = 0;

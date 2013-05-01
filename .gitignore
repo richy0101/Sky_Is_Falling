@@ -7,6 +7,14 @@ cheetah.cpp~
 fox.cpp~
 turtle.cpp~
 mainwindow.cpp~
+animal.cpp~
+animal.h~
+cheetah.h~
+donkey.h~
+farmer.cpp~
+fox.h~
+gazelle.h~
+turtle.h~
 game_rhphilli
 
 # Compiled Object files

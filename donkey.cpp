@@ -19,9 +19,18 @@ Donkey::~Donkey()
 
 void Donkey::move()
 {
-   rect.moveTo(x,y+speed+2);
-   //std::cout << "y is " << y << std::endl;
-   y =y+speed+2;
+   randNum = std::rand()%4;
+  
+   if(randNum == 1)
+   {
+   rect.moveTo(x,y);
+   }
+   else
+   {
+      rect.moveTo(x,y+speed+2);
+      //std::cout << "y is " << y << std::endl;
+      y =y+speed+2;
+   }
 }
 
 

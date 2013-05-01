@@ -22,7 +22,7 @@ void Farmer::moveLeft(int left)
 
 void Farmer::moveRight(int right)
 {
-  if (rect.right() <= 898)
+  if (rect.right() <= 1098)
     rect.moveTo(right, rect.top());
 }
 
