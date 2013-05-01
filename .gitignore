@@ -1,6 +1,14 @@
 GameDesignDoc.md~
 .gitignore~
+donkey.cpp~
 README.md~
+gazelle.cpp~
+cheetah.cpp~
+fox.cpp~
+turtle.cpp~
+mainwindow.cpp~
+game_rhphilli
+
 # Compiled Object files
 *.slo
 *.lo
