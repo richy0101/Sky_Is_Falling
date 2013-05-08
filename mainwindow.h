@@ -8,6 +8,9 @@
 #include "fox.h"
 #include "gazelle.h"
 #include "cheetah.h"
+#include "rabbit.h"
+#include "wolf.h"
+
 #include <QWidget>
 #include <QKeyEvent>
 #include <vector>
@@ -20,6 +23,7 @@
 #include <QLCDNumber>
 #include <QLabel>
 #include <QPushButton>
+#include <fstream>
 
 using namespace std;
 
@@ -39,6 +43,7 @@ class MainWindow : public QWidget
 
   signals:
      void scoreChanged(int s);
+     void highScoreChanged(int h);
      void levelChanged(int l);
      void livesChanged(int n);
 
@@ -63,12 +68,16 @@ class MainWindow : public QWidget
     int lives;
     int level;
     int score;
+    int highScore;
+    QString farmPic;
+    ofstream outfile;
+    ifstream infile;
     vector<Animal*> list;
     QPalette* palette;
     Farmer *farmer;
     QGridLayout *layout;
     QPushButton *sButton,*qButton,*pButton;
-    QLCDNumber *scoreNum,*levelNum,*liveNum;
+    QLCDNumber *scoreNum,*highScoreNum,*levelNum,*liveNum;
 };
 
 #endif

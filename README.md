@@ -12,7 +12,8 @@
 
 ### Compile & Run Instructions
 The grader should use the following procedure to compile and run the code:
-```shell
+- Must have a "highscores.txt" file if you want to read in previous high scores. Otherwise the game will automatically create one.
+
 #Compile Instructions
 "qmake -project"
 "qmake"

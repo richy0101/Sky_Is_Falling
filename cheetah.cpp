@@ -17,7 +17,7 @@ Cheetah::~Cheetah()
   std::cout << "Cheetah deleted\n";
 }
 
-void Cheetah::move()
+void Cheetah::move( Farmer *f )
 {
    randNum = std::rand()%5;
   

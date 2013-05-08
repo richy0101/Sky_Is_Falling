@@ -17,11 +17,20 @@ Turtle::~Turtle()
   std::cout << "Turtle deleted\n";
 }
 
-void Turtle::move()
+void Turtle::move( Farmer *f )
 {
-   rect.moveTo(x,y+speed);
-   //std::cout << "y is " << y << std::endl;
-   y +=speed;
+   if (x >= f->getX())
+   {
+      rect.moveTo(x-1,y+speed);
+      x -= 1;
+      y += speed;
+   }
+   else
+   {
+      rect.moveTo(x+1,y+speed);
+      x += 1;
+      y += speed;
+   }
 }
 
 

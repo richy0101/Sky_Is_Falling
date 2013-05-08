@@ -6,6 +6,7 @@
 #include <QString>
 #include <iostream>
 #include <stdlib.h>
+#include "farmer.h"
 
 class Animal
 {
@@ -17,7 +18,7 @@ class Animal
     void resetState();
     QRect getRect();
     QImage & getImage();
-    virtual void move();
+    virtual void move( Farmer *f);
     void randAnimal();
     int x;
     int y;

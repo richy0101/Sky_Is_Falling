@@ -23,13 +23,20 @@
 >    - The gazelle runs quickly and is worth 40 points. The gazelle is able to move left and right randomly, not just in a straight line downwards.
 > + **6.** `Cheetah`
 > + ![alt text](http://www.iconshock.com/img_jpg/SUNNYDAY/animals/jpg/128/cheetah_icon.jpg "Cheetah")
->    - The cheetah is the fastest animal and is worth 50 points. The cheetah is swift and at random times can sprint downwards for a `move`.
+>    - The cheetah is the fastest running animal and is worth 50 points. The cheetah is swift and at random times can sprint downwards for a `move`.
+> + **6.** `Rabbit`
+> + ![alt text](http://icongal.com/gallery/image/40628/rabbit_bunny_easter_easter_eggs.png "Cheetah")
+>    - The rabbit is patient and waits to move. It will randomly move after long pauses, but the move will be a great leap. It also tracks the farmer and will move in the direction of him. The rabbit is worth 60 points.
+> + **6.** `Wolf`
+> + ![alt text](http://www.designdownloader.com/item/pngs/Wolf_t004/Wolf_t004-20120728103808-00001.png "Cheetah")
+>    - The wolf has the ability to make long jumps to the left, right, or downwards. It is fast when it leaps and is worth 70 points. 
 
 ## User Gameplay
 > **Purpose**: The user will control the farmer with keyboard strokes and try to avoid the falling animals. The user can only move the farmer left and right. It is simple gameplay controls that will make the game simpler to play for the user. I eventually plan to add power ups to the game so there will be a keyboard stroke added to use the powerup.
 
 ## Scoring & Lives
-> + **1.** `Score` - The user will get points for dodging different types of animals. No points can ever be reducted from the player. The player gets 10 poinst for dodging turtles, 20 for donkeys, 30 for foxes, 40 for gazelles, and 50 for cheetahs. The points will be displayed in a separate window that will also display the number of lives, and start, pause, and quit buttons.
+> + **1.** `Score` - The user will get points for dodging different types of animals. No points can ever be reducted from the player. The player gets 10 poinst for dodging turtles, 20 for donkeys, 30 for foxes, 40 for gazelles, 50 for cheetahs, 60 for rabbits, and 70 for wolfs. The points will be displayed in a separate window that will also display the number of lives, and start, pause, and quit buttons.
+>     - `High Score`- The game keeps track of every game played and what the highest score ever was. See if you can beat the high score of all this game's history!
 > + **2.** `Lives` - The user gets two lives to spare if he gets hit by a falling animal. All types of animals that aren't dodged make the user lose 1 live. After all three lives are lost, the game ends and the scoring gets stopped, where the user can choose to quit or restart the game.
 > 
 
@@ -41,7 +48,7 @@
 >     - User controls the farmer to dodge all the animals that are falling. One life of the two given will be taken away if the farmer touches a falling animal. The user accumulates a different amount of points per animal dodged.
 >     - Animal objects are created as the fall from the top of the screen and are deleted at the end of the window when they have completely fallen. There is no set number of animals that can be on the field but animals are created at random time intervals.
 > + **2.** `Menu Window` inside `Game Window`
->     - Displays the user's current `score`, and the user's current `lives` at the top of the window.
+>     - Displays the user's current `level`, `score`, `highscore`, and the user's current `lives` at the top of the window.
 >     - Displays three buttons: `start`,`pause`,`quit`
 >          * `start` button- when pressed the game starts, either at the beginning of the game when the game is preset to pause (timer is off) or when the game is paused.
 >          * `pause` button- when pressed the game pauses by pausing the timer.

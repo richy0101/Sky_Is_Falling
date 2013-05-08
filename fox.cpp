@@ -17,7 +17,7 @@ Fox::~Fox()
   std::cout << "Fox deleted\n";
 }
 
-void Fox::move()
+void Fox::move( Farmer *f )
 {
    randNum = std::rand()%5;
   

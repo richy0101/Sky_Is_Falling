@@ -13,6 +13,8 @@ class Farmer
 
   public:
     void resetState();
+    int getX();
+    int getY();
     void moveLeft(int left);
     void moveRight(int right);
     QRect getRect();
@@ -21,6 +23,7 @@ class Farmer
   private:
     QImage image;
     QRect rect;
+    int x,y;
 
 };
 

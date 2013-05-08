@@ -35,7 +35,7 @@ void Animal::randAnimal()
   }
 }
 
-void Animal::move()
+void Animal::move(Farmer *f)
 {
 }
 

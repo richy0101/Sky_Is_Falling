@@ -17,7 +17,7 @@ Gazelle::~Gazelle()
   std::cout << "Gazelle deleted\n";
 }
 
-void Gazelle::move()
+void Gazelle::move( Farmer *f )
 {
    randNum = std::rand()%5;
   

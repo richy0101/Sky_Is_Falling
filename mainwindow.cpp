@@ -3,16 +3,28 @@
 #include <QApplication>
 #include <vector>
 
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
+  infile.open("highscore.txt", ios::in);
+  if(!infile)
+     highScore = 0;
+  else
+  {
+     string tData;
+     infile >> tData;
+     highScore = atoi(tData.c_str());
+  }
+     
   rand = 0;
   velocity = 1;
   timerCount = 0;
   lives = 3;
   score = 0;
   level = 0;
+  farmPic = "farm1.jpg";
   gameOver = FALSE;
   paused = FALSE;
   gameStarted = FALSE;
@@ -22,7 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
     scoreNum = new QLCDNumber(5);
     scoreNum->setSegmentStyle(QLCDNumber::Filled);
     scoreNum->setMode(QLCDNumber::Dec);
-    levelNum = new QLCDNumber(2);
+    highScoreNum = new QLCDNumber(5);
+    highScoreNum->setSegmentStyle(QLCDNumber::Filled);
+    highScoreNum->setMode(QLCDNumber::Dec);
+    levelNum = new QLCDNumber(5);
     levelNum->setSegmentStyle(QLCDNumber::Filled);
     levelNum->setMode(QLCDNumber::Dec);
     liveNum = new QLCDNumber(5);
@@ -40,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(qButton , SIGNAL(clicked()), this, SLOT(quitGame()));
     
     connect(this, SIGNAL(scoreChanged(int)), scoreNum, SLOT(display(int)));
+    connect(this, SIGNAL(highScoreChanged(int)), highScoreNum, SLOT(display(int)));
     connect(this, SIGNAL(levelChanged(int)), levelNum, SLOT(display(int)));
     connect(this, SIGNAL(livesChanged(int)), liveNum, SLOT(display(int)));
 
@@ -48,12 +64,14 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(levelNum, 2, 0, Qt::AlignLeft);
     layout->addWidget(createLabel(tr("SCORE")), 3, 0, Qt::AlignLeft);
     layout->addWidget(scoreNum, 4, 0,Qt::AlignLeft);
-    layout->addWidget(createLabel(tr("LIVES")), 5, 0, Qt::AlignLeft);
-    layout->addWidget(liveNum, 6, 0, Qt::AlignLeft);
+    layout->addWidget(createLabel(tr("HIGH SCORE")), 5, 0, Qt::AlignLeft);
+    layout->addWidget(highScoreNum, 6, 0,Qt::AlignLeft);
+    layout->addWidget(createLabel(tr("LIVES")), 7, 0, Qt::AlignLeft);
+    layout->addWidget(liveNum, 8, 0, Qt::AlignLeft);
     
-    layout->addWidget(sButton, 9, 0,Qt::AlignLeft);  
-    layout->addWidget(pButton, 8, 0, Qt::AlignLeft);
-    layout->addWidget(qButton, 7, 0, Qt::AlignLeft);
+    layout->addWidget(sButton, 11, 0,Qt::AlignLeft);  
+    layout->addWidget(pButton, 10, 0, Qt::AlignLeft);
+    layout->addWidget(qButton, 9, 0, Qt::AlignLeft);
     
     //setLayout(layout);	
 
@@ -61,15 +79,23 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
  delete farmer;
- for(int i = 0;i<5;i++)
+ for(unsigned int i = 0;i<list.size();i++)
      delete list[i];
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
   QPainter painter(this);
-
+  emit highScoreChanged(highScore);
   if (gameOver) {
+    if(score == highScore)
+    {
+       outfile.open("highscore.txt");
+       outfile << highScore << "\n";
+       //std::cout << highScore << std::endl;
+       outfile.close();
+    }
+  
     QFont font("Courier", 20, QFont::DemiBold);
     QFontMetrics fm(font);
     int textWidth = fm.width("Game Over");
@@ -82,8 +108,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
     painter.drawText(-textWidth/2, 0, "Game Over");
     killTimer(timerId);
   }
-  palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("farm.jpg")))));
- 	setPalette(*palette); 
+  
+  //std::cout<<farmPic.toStdString()<<std::endl;
+  palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap(farmPic)))));
+  setPalette(*palette); 
   painter.drawImage(farmer->getRect(),farmer->getImage());
   for(unsigned int i=0;i<list.size();i++)
      painter.drawImage(list[i]->getRect(),list[i]->getImage());
@@ -107,6 +135,14 @@ void MainWindow::timerEvent(QTimerEvent *event)
  	    emit levelChanged(level);
  	 }
   }
+  
+  if(level%3 == 1)
+        farmPic = "farm1.jpg";
+     if(level%3 == 2)
+        farmPic = "farm2.jpg";
+     if(level%3 == 0)
+        farmPic = "farm3.jpg";
+        
   if(timerCount%20 == 0 && velocity < 3)
   {
      randAnimal();
@@ -130,7 +166,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
   for(unsigned int i=0;i<list.size();i++)
   {
      list[i]->speed = velocity;
-     list[i]->move();
+     list[i]->move(farmer);
      if(list[i]->y >= 548)
      {
         if(list[i]->id == "turtle")
@@ -143,10 +179,22 @@ void MainWindow::timerEvent(QTimerEvent *event)
           score += 40;
         if(list[i]->id == "cheetah")
           score += 50;
+        if(list[i]->id == "rabbit")
+          score += 60;
+        if(list[i]->id == "wolf")
+          score += 70;
         
         emit scoreChanged(score);
+        
         delete list[i];
         list.erase(list.begin()+i);
+        
+        if(score > highScore)
+    	  {
+      	 highScore = score;
+      	 emit scoreChanged(highScore);
+        }
+     
      }
   }
   
@@ -207,7 +255,7 @@ void MainWindow::pauseGame()
 void MainWindow::quitGame()
 {
   killTimer(timerId);    
- // gameOver = TRUE;      
+  gameOver = TRUE;      
   gameStarted = FALSE;
   qApp->exit();
 }
@@ -220,10 +268,15 @@ void MainWindow::randAnimal()
      rand = std::rand() % 2;
   else if(timerCount >= 200 && timerCount < 300) // 450 equals 45 seconds
      rand = std::rand() % 3;
-  else if(timerCount <= 300 && timerCount < 400) // 600 equals 60 seconds
+  else if(timerCount >= 300 && timerCount < 400) // 600 equals 60 seconds
      rand = std::rand() % 4;
-  else if(timerCount >= 500) 
+  else if(timerCount >= 400 && timerCount < 500) 
      rand = std::rand() % 5;
+  else if(timerCount >= 500 && timerCount < 600) 
+     rand = std::rand() % 6;
+  else if(timerCount > 600) 
+     rand = std::rand() % 7;
+        
   switch(rand)
   {
      case 0: list.push_back(new Turtle());
@@ -235,6 +288,10 @@ void MainWindow::randAnimal()
      case 3: list.push_back(new Gazelle());
      break;
      case 4: list.push_back(new Cheetah());
+     break;
+     case 5: list.push_back(new Rabbit());
+     break;
+     case 6: list.push_back(new Wolf());
      break;
   }
 }

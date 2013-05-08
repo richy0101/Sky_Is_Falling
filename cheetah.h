@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include "animal.h"
+#include "farmer.h"
 
 class Cheetah : public Animal
 {
@@ -17,7 +18,7 @@ class Cheetah : public Animal
 
   public:
     void resetState();
-    void move();
+    void move( Farmer *f );
     QRect getRect();
     QImage & getImage();
     

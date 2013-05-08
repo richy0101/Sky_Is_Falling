@@ -17,7 +17,7 @@ Donkey::~Donkey()
   std::cout << "Donkey deleted\n";
 }
 
-void Donkey::move()
+void Donkey::move( Farmer *f )
 {
    randNum = std::rand()%4;
   

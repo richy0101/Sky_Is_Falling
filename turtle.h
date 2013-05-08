@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include "animal.h"
+#include "farmer.h"
 
 
 class Turtle : public Animal
@@ -18,7 +19,7 @@ class Turtle : public Animal
 
   public:
     void resetState();
-    void move();
+    void move( Farmer *f );
     QRect getRect();
     QImage & getImage();
     
