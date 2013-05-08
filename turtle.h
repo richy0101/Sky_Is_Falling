@@ -10,6 +10,11 @@
 #include "animal.h"
 #include "farmer.h"
 
+/**
+A class that represents a turtle that inherits the basic member functions of the class Animal. It implements the move function.
+
+@author rhphilli
+*/
 
 class Turtle : public Animal
 {
@@ -19,6 +24,7 @@ class Turtle : public Animal
 
   public:
     void resetState();
+    /**a method that allows the turtle to move in the direction of where the farmer is*/
     void move( Farmer *f );
     QRect getRect();
     QImage & getImage();

@@ -5,6 +5,14 @@
 
 using namespace std;
 
+/**
+Constructor that opens the files to read in, initializes the variables, and sets up the layout with widgets.
+
+@pre inhereits QWidget's constructor
+@post
+@param a pointer to a widget
+@return None
+*/
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
@@ -77,12 +85,28 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
+/**
+Destructor that deletes the farmer and all the animals in the list
+
+@pre farmer and >0 animals present
+@post 
+@param None
+@return None
+*/
 MainWindow::~MainWindow() {
  delete farmer;
  for(unsigned int i = 0;i<list.size();i++)
      delete list[i];
 }
 
+/**
+Paints the screen with the new updated event every time the timer increments 
+
+@pre timer is on
+@post
+@param a pointer to a QPaintEvent
+@return None
+*/
 void MainWindow::paintEvent(QPaintEvent *event)
 {
   QPainter painter(this);
@@ -118,6 +142,14 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 }
 
+/**
+The method that changes all the moves, level, and score changes every time the timer increments.
+
+@pre timer is on
+@post
+@param a pointer to a QTimerEvent
+@return None
+*/
 void MainWindow::timerEvent(QTimerEvent *event)
 {
   if(timerCount % 100 == 0)
@@ -204,8 +236,14 @@ void MainWindow::timerEvent(QTimerEvent *event)
  // std::cout<< "This is how many 10 milliseconds has passed: " << timerCount << std::endl;
 }
 
+/**
+A method that changes the x position of the farmer when a left or right arrow key is pressed.
 
-
+@pre a key is pressed
+@post
+@param a pointer to a QKeyEvent
+@return None
+*/
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
@@ -229,6 +267,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
 }
 
+/**
+A method that starts the game by reseting the board
+
+@pre game is off, timer is off
+@post game is on, timer is on
+@param None
+@return None
+*/
 void MainWindow::startGame()
 { 
   if (!gameStarted) {
@@ -241,6 +287,14 @@ void MainWindow::startGame()
   }
 }
 
+/**
+A method that pauses the game by stopping the timer
+
+@pre timer is on
+@post timer is off
+@param None
+@return None
+*/
 void MainWindow::pauseGame()
 {
   if (paused) {
@@ -252,6 +306,14 @@ void MainWindow::pauseGame()
    }
 }
 
+/**
+A method that quits the application
+
+@pre
+@post
+@param None
+@return None
+*/
 void MainWindow::quitGame()
 {
   killTimer(timerId);    
@@ -260,6 +322,14 @@ void MainWindow::quitGame()
   qApp->exit();
 }
 
+/**
+A method that creates a random animal based on the level/time progression
+
+@pre timer is running
+@post
+@param None
+@return None
+*/
 void MainWindow::randAnimal()
 {
   if(timerCount < 100) // 150 equals 15 seconds
@@ -296,6 +366,14 @@ void MainWindow::randAnimal()
   }
 }
 
+/**
+A method that checks the collision of the farmer and animals and subtracts lives
+
+@pre timer is on
+@post 
+@param None
+@return None
+*/
 void MainWindow::checkCollision()
 {
   for(unsigned int i=0;i<list.size();i++)

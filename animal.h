@@ -8,6 +8,12 @@
 #include <stdlib.h>
 #include "farmer.h"
 
+/**
+A superclass to represent an animal that has basic methods. To be inherited by many specific animals.
+
+@author rhphilli
+*/
+
 class Animal
 {
    public:
@@ -18,6 +24,7 @@ class Animal
     void resetState();
     QRect getRect();
     QImage & getImage();
+    /**a pure virtual move method to be implemented by inherited classes*/
     virtual void move( Farmer *f);
     void randAnimal();
     int x;

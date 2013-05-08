@@ -27,6 +27,12 @@
 
 using namespace std;
 
+/**
+A class to represent the main application window where the game runs
+
+@author rhphilli
+*/
+
 class MainWindow : public QWidget 
 {
   Q_OBJECT
@@ -35,18 +41,19 @@ class MainWindow : public QWidget
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QLabel* createLabel(const QString &text);
-    
+  
+  /**slots to link buttons to game actions*/
   public slots:
     void startGame();
     void pauseGame();
     void quitGame();
-
+  /**signals to change scores on the board*/
   signals:
      void scoreChanged(int s);
      void highScoreChanged(int h);
      void levelChanged(int l);
      void livesChanged(int n);
-
+  /**Events that happen when the timer increments or a key is pressed*/
   protected:
     void paintEvent(QPaintEvent *event);
     void timerEvent(QTimerEvent *event);
@@ -60,7 +67,8 @@ class MainWindow : public QWidget
   private:
     int velocity;
     int timerId;
-    int timerCount; //increments every 10 milliseconds
+    /**increments every 10 milliseconds*/
+    int timerCount; 
     int rand;
     bool gameOver;
     bool gameStarted;
@@ -72,6 +80,7 @@ class MainWindow : public QWidget
     QString farmPic;
     ofstream outfile;
     ifstream infile;
+    /**all falling animals that are in a vector*/
     vector<Animal*> list;
     QPalette* palette;
     Farmer *farmer;

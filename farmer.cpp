@@ -1,6 +1,14 @@
 #include "farmer.h"
 #include <iostream>
 
+/**
+Constructor to load the farmers image and reset its state
+
+@pre Farmer is being constructed
+@post
+@param None
+@return None
+*/
 Farmer::Farmer()
 {
   x = 0;
@@ -26,6 +34,14 @@ int Farmer::getY()
    return y;
 }
 
+/**
+Method to move farmer left
+
+@pre 
+@post
+@param an integer that is the x coordinate of the farmer
+@return None
+*/
 void Farmer::moveLeft(int left)
 {
   if (rect.left() >= 122)
@@ -36,6 +52,14 @@ void Farmer::moveLeft(int left)
   }
 }
 
+/**
+Method to move farmer right
+
+@pre
+@post
+@param an integer that is the x coordinate of the farmer
+@return None
+*/
 void Farmer::moveRight(int right)
 {
   if (rect.right() <= 1098)
@@ -46,6 +70,14 @@ void Farmer::moveRight(int right)
   }
 }
 
+/**
+A method that places the farmer in the middle of the board on the bottom of the screen when it is constructed.
+
+@pre Farmer is being constructed
+@post
+@param None
+@return None
+*/
 void Farmer::resetState()
 {
   rect.moveTo(450, 500);

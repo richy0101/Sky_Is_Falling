@@ -3,6 +3,14 @@
 #include <QApplication>
 #include <QPushButton>
 
+/**
+Method to center the game window on the computer screen.
+
+@pre
+@post
+@param Reference to a widget (I.e. pass in a pointer to the mainwindow, mainwindow is a widget)
+@return None
+*/
 void center(QWidget &widget)
 {
   int x, y;

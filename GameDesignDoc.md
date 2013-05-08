@@ -11,7 +11,7 @@
 >    - The user controls the farmer by moving him left or right in order to dodge the falling animals. User controls the farmer with the keyboard. The farmer has 2 lives.
 > + **2.** `Turtle`
 > + ![alt text](http://www.designdownloader.com/item/pngs/Sea_Turtle_t005/Sea_Turtle_t005-20120619174148-00001.png "Turtle")
->    - The turtle is the slowest falling animal and is worth 10 points if dodged. The turtle moves normally and doesn't have any special `move` function.
+>    - The turtle is the slowest falling animal and is worth 10 points if dodged. The turtle moves in the direction of where the farmer is and doesn't have any special `move` function.
 > + **3.** `Donkey`
 > + ![alt text](http://icons.iconarchive.com/icons/turbomilk/animals/256/donkey-icon.png "Donkey")
 >    - The donkey is the second slowest animal and is worth 20 points if dodged. Donkeys sometime take breaks and will stay in the same position for on `move`.

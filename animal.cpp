@@ -2,7 +2,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <QRect>
+/**
+Constructor to load image of animal and reset its state on the board
 
+@pre
+@post
+@param None
+@return None
+*/
 Animal::Animal()
 {
   randAnimal();
@@ -11,6 +18,7 @@ Animal::Animal()
   rect = image.rect();
   resetState();
 }
+
 
 Animal::~Animal()
 {
@@ -39,6 +47,14 @@ void Animal::move(Farmer *f)
 {
 }
 
+/**
+Method to randomly place the animal at the top of the board
+
+@pre Animal is being constructed
+@post
+@param None
+@return None
+*/
 void Animal::resetState()
 {
   rand = std::rand() % 1030 + 120;
